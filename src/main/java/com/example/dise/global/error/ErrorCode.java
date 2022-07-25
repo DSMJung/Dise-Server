@@ -20,6 +20,7 @@ public enum ErrorCode {
     ALREADY_USER_EXIST(409, "이미 존재하는 유저 입니다."),
 
     INTERNAL_SERVER_ERROR(500, "Internal Server Error");
+
     private final int status;
     private final String message;
 }
