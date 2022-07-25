@@ -6,7 +6,6 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-@JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum ErrorCode {
 
     EXPIRED_JWT(401, "토큰이 만료되었습니다."),
