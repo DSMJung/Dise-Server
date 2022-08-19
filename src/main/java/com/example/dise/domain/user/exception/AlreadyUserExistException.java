@@ -5,7 +5,7 @@ import com.example.dise.global.error.ErrorCode;
 
 public class AlreadyUserExistException extends CustomException {
 
-    public static final AlreadyUserExistException EXCEPTION =
+    public static final CustomException EXCEPTION =
             new AlreadyUserExistException();
 
     private AlreadyUserExistException() {
