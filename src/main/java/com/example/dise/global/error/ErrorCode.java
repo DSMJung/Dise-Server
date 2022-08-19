@@ -1,6 +1,5 @@
 package com.example.dise.global.error;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 

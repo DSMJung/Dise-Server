@@ -12,11 +12,12 @@ import javax.persistence.*;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(length = 20, nullable = false)
+    @Column(length = 20, nullable = false, unique = true)
     private String accountId;
 
     @Column(length = 60, nullable = false)
@@ -24,7 +25,6 @@ public class User {
 
     @Column(length = 4, nullable = false)
     private String name;
-
 
     @Builder
     public User(String accountId, String password, String name) {
