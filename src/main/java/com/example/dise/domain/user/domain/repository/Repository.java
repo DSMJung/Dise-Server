@@ -2,12 +2,11 @@ package com.example.dise.domain.user.domain.repository;
 
 import com.example.dise.domain.user.domain.User;
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
-@Repository
-public interface UserRepository extends CrudRepository<User, Long> {
+@org.springframework.stereotype.Repository
+public interface Repository extends CrudRepository<User, Long> {
 
     Optional<User> findByAccountId(String accountId);
 }

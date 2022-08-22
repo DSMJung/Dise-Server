@@ -2,7 +2,7 @@ package com.example.dise.domain.user.service;
 
 import com.example.dise.domain.user.controller.dto.request.UserSignUpRequest;
 import com.example.dise.domain.user.domain.User;
-import com.example.dise.domain.user.domain.repository.UserRepository;
+import com.example.dise.domain.user.domain.repository.Repository;
 import com.example.dise.domain.user.exception.AlreadyUserExistException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -14,11 +14,11 @@ import org.springframework.transaction.annotation.Transactional;
 public class UserSignUpService {
 
     private final PasswordEncoder passwordEncoder;
-    private final UserRepository userRepository;
+    private final Repository repository;
 
     @Transactional
     public void signUp(UserSignUpRequest request) {
-        if (userRepository.findByAccountId(request.getAccountId()).isPresent()) {
+        if (repository.findByAccountId(request.getAccountId()).isPresent()) {
             throw AlreadyUserExistException.EXCEPTION;
         }
 
@@ -28,6 +28,6 @@ public class UserSignUpService {
                 .name(request.getName())
                 .build();
 
-        userRepository.save(user);
+        repository.save(user);
     }
 }
