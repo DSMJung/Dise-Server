@@ -16,6 +16,7 @@ import javax.validation.Valid;
 public class UserController {
 
     private final UserSignUpService userSignUpService;
+
     private final UpdateUserInfoService updateUserInfoService;
 
     @ResponseStatus(HttpStatus.CREATED)
