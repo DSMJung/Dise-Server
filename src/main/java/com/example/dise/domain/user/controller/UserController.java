@@ -1,12 +1,13 @@
 package com.example.dise.domain.user.controller;
 
 import com.example.dise.domain.user.service.UserSignUpService;
-import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.*;
 import com.example.dise.domain.user.controller.dto.request.UpdateUserInfoRequest;
 import com.example.dise.domain.user.controller.dto.request.UserSignUpRequest;
 import com.example.dise.domain.user.service.UpdateUserInfoService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
+
 
 import javax.validation.Valid;
 
