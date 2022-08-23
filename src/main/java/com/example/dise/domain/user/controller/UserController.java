@@ -24,6 +24,7 @@ public class UserController {
         userSignUpService.signUp(request);
     }
 
+
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @PutMapping
     public void updateUser(@RequestBody @Valid UpdateUserInfoRequest request) {
