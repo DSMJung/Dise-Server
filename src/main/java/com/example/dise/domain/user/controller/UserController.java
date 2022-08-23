@@ -1,8 +1,10 @@
 package com.example.dise.domain.user.controller;
 
+import com.example.dise.domain.user.controller.dto.request.UpdateUserInfoRequest;
 import com.example.dise.domain.user.controller.dto.request.UserLoginRequest;
 import com.example.dise.domain.user.controller.dto.request.UserSignUpRequest;
 import com.example.dise.domain.user.controller.dto.response.TokenResponse;
+import com.example.dise.domain.user.service.UpdateUserInfoService;
 import com.example.dise.domain.user.service.UserLoginService;
 import com.example.dise.domain.user.service.UserSignUpService;
 import lombok.RequiredArgsConstructor;
@@ -18,6 +20,7 @@ public class UserController {
 
     private final UserSignUpService userSignUpService;
     private final UserLoginService userLoginService;
+    private final UpdateUserInfoService updateUserInfoService;
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/signup")
@@ -29,4 +32,11 @@ public class UserController {
     public TokenResponse login(@RequestBody @Valid UserLoginRequest request) {
         return userLoginService.login(request);
     }
+
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @PutMapping
+    public void updateUserInfo(@RequestBody @Valid UpdateUserInfoRequest request) {
+        updateUserInfoService.excute(request);
+    }
+
 }
