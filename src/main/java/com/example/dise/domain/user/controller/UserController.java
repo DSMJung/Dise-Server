@@ -1,6 +1,9 @@
 package com.example.dise.domain.user.controller;
 
+import com.example.dise.domain.user.controller.dto.request.UserLoginRequest;
 import com.example.dise.domain.user.controller.dto.request.UserSignUpRequest;
+import com.example.dise.domain.user.controller.dto.response.TokenResponse;
+import com.example.dise.domain.user.service.UserLoginService;
 import com.example.dise.domain.user.service.UserSignUpService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -14,10 +17,16 @@ import javax.validation.Valid;
 public class UserController {
 
     private final UserSignUpService userSignUpService;
+    private final UserLoginService userLoginService;
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/signup")
     public void signUp(@RequestBody @Valid UserSignUpRequest request) {
         userSignUpService.signUp(request);
+    }
+
+    @PostMapping("/login")
+    public TokenResponse login(@RequestBody @Valid UserLoginRequest request) {
+        return userLoginService.login(request);
     }
 }
