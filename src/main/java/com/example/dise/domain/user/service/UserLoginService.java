@@ -1,6 +1,7 @@
 package com.example.dise.domain.user.service;
 
 import com.example.dise.domain.user.controller.dto.request.UserLoginRequest;
+import com.example.dise.domain.user.controller.dto.response.TokenResponse;
 import com.example.dise.domain.user.domain.User;
 import com.example.dise.domain.user.domain.repository.UserRepository;
 import com.example.dise.domain.user.exception.PasswordMismatchException;
@@ -19,7 +20,7 @@ public class UserLoginService {
     private final JwtTokenProvider jwtTokenProvider;
 
     @Transactional
-    public String login(UserLoginRequest request) {
+    public TokenResponse login(UserLoginRequest request) {
         User user = userRepository.findByAccountId(request.getAccountId())
                 .orElseThrow(() -> UserNotFoundException.EXCEPTION);
 
@@ -27,6 +28,8 @@ public class UserLoginService {
             throw PasswordMismatchException.EXCEPTION;
         }
 
-        return jwtTokenProvider.generateToken(user.getAccountId());
+        return TokenResponse.builder()
+                .accessToken(jwtTokenProvider.generateToken(request.getAccountId()))
+                .build();
     }
 }

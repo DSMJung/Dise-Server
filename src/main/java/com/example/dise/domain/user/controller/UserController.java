@@ -2,6 +2,7 @@ package com.example.dise.domain.user.controller;
 
 import com.example.dise.domain.user.controller.dto.request.UserLoginRequest;
 import com.example.dise.domain.user.controller.dto.request.UserSignUpRequest;
+import com.example.dise.domain.user.controller.dto.response.TokenResponse;
 import com.example.dise.domain.user.service.UserLoginService;
 import com.example.dise.domain.user.service.UserSignUpService;
 import lombok.RequiredArgsConstructor;
@@ -25,7 +26,7 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public String login(@RequestBody @Valid UserLoginRequest request) {
+    public TokenResponse login(@RequestBody @Valid UserLoginRequest request) {
         return userLoginService.login(request);
     }
 }
