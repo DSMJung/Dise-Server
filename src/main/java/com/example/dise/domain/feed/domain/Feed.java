@@ -39,4 +39,10 @@ public class Feed {
         this.user = user;
     }
 
+    public void modifyFeed(String title, String content, Category category) {
+        this.title = title;
+        this.content = content;
+        this.category = category;
+    }
+
 }
