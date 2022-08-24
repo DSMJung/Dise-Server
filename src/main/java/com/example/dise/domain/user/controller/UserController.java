@@ -37,12 +37,12 @@ public class UserController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @PutMapping
     public void updateUserInfo(@RequestBody @Valid UpdateUserInfoRequest request) {
-        updateUserInfoService.excute(request);
+        updateUserInfoService.execute(request);
     }
 
     @GetMapping
     public UserInfoResponse getInfo() {
-        return getUserInfoService.excute();
+        return getUserInfoService.execute();
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)

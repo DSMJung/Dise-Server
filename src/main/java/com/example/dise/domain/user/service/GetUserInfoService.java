@@ -14,7 +14,7 @@ public class GetUserInfoService {
     private final UserFacade userFacade;
 
     @Transactional(readOnly = true)
-    public UserInfoResponse excute() {
+    public UserInfoResponse execute() {
 
         User user = userFacade.getCurrentUser();
 
