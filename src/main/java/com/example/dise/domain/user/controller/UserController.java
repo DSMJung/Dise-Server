@@ -5,10 +5,7 @@ import com.example.dise.domain.user.controller.dto.request.UserLoginRequest;
 import com.example.dise.domain.user.controller.dto.request.UserSignUpRequest;
 import com.example.dise.domain.user.controller.dto.response.TokenResponse;
 import com.example.dise.domain.user.controller.dto.response.UserInfoResponse;
-import com.example.dise.domain.user.service.GetUserInfoService;
-import com.example.dise.domain.user.service.UpdateUserInfoService;
-import com.example.dise.domain.user.service.UserLoginService;
-import com.example.dise.domain.user.service.UserSignUpService;
+import com.example.dise.domain.user.service.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -24,6 +21,7 @@ public class UserController {
     private final UserLoginService userLoginService;
     private final UpdateUserInfoService updateUserInfoService;
     private final GetUserInfoService getUserInfoService;
+    private final WithdrawalService withdrawalService;
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/signup")
@@ -46,4 +44,11 @@ public class UserController {
     public UserInfoResponse getInfo() {
         return getUserInfoService.excute();
     }
+
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @DeleteMapping
+    public void withdrawal() {
+        withdrawalService.execute();
+    }
+
 }
