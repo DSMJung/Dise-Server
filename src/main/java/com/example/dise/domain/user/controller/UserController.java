@@ -4,6 +4,8 @@ import com.example.dise.domain.user.controller.dto.request.UpdateUserInfoRequest
 import com.example.dise.domain.user.controller.dto.request.UserLoginRequest;
 import com.example.dise.domain.user.controller.dto.request.UserSignUpRequest;
 import com.example.dise.domain.user.controller.dto.response.TokenResponse;
+import com.example.dise.domain.user.controller.dto.response.UserInfoResponse;
+import com.example.dise.domain.user.service.GetUserInfoService;
 import com.example.dise.domain.user.service.UpdateUserInfoService;
 import com.example.dise.domain.user.service.UserLoginService;
 import com.example.dise.domain.user.service.UserSignUpService;
@@ -21,6 +23,7 @@ public class UserController {
     private final UserSignUpService userSignUpService;
     private final UserLoginService userLoginService;
     private final UpdateUserInfoService updateUserInfoService;
+    private final GetUserInfoService getUserInfoService;
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/signup")
@@ -39,4 +42,8 @@ public class UserController {
         updateUserInfoService.excute(request);
     }
 
+    @GetMapping
+    public UserInfoResponse getInfo() {
+        return getUserInfoService.excute();
+    }
 }
