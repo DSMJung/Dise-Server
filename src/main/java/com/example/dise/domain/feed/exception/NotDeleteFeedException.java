@@ -5,10 +5,10 @@ import com.example.dise.global.error.ErrorCode;
 
 public class NotDeleteFeedException extends CustomException {
 
-    public static final NotDeleteFeedException EXCEPTION =
+    public static final CustomException EXCEPTION =
             new NotDeleteFeedException();
 
     private NotDeleteFeedException() {
-        super(ErrorCode.NOY_DELETE_FEED);
+        super(ErrorCode.NOT_DELETE_FEED);
     }
 }
