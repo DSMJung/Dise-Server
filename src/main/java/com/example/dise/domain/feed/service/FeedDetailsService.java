@@ -14,20 +14,18 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class FeedDetailsService {
 
-    private final UserFacade userFacade;
     private final FeedRepository feedRepository;
 
     @Transactional(readOnly = true)
     public FeedDetailsResponse execute(Integer feedId) {
 
-        User user = userFacade.getCurrentUser();
         Feed feed = getFeed(feedId);
 
         return FeedDetailsResponse.builder()
                 .title(feed.getTitle())
                 .content(feed.getContent())
                 .createdAt(feed.getCreatedAt())
-                .userName(user.getName())
+                .userName(feed.getUser().getName())
                 .build();
     }
 

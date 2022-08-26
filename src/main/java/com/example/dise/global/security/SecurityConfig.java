@@ -38,6 +38,8 @@ public class SecurityConfig {
                 .antMatchers(HttpMethod.POST, "/user/signup").permitAll()
                 .antMatchers(HttpMethod.POST, "/user/login").permitAll()
 
+                .antMatchers("/feed/**").permitAll()
+
                 .anyRequest().authenticated()
 
                 .and()
