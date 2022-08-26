@@ -2,6 +2,7 @@ package com.example.dise.domain.feed.domain;
 
 import com.example.dise.domain.feed.domain.type.Category;
 import com.example.dise.domain.user.domain.User;
+import com.example.dise.global.entity.BaseTimeEntity;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -12,7 +13,7 @@ import javax.persistence.*;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
-public class Feed {
+public class Feed extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
