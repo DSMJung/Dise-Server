@@ -43,7 +43,7 @@ public class FeedController {
     }
 
     @GetMapping("/{feed-id}")
-    public FeedDetailsResponse getFeedDetails(@PathVariable("feed-id") Integer feedId) {
+    public FeedDetailsResponse feedDetails(@PathVariable("feed-id") Integer feedId) {
         return feedDetailsService.execute(feedId);
     }
 }
