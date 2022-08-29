@@ -3,9 +3,7 @@ package com.example.dise.domain.feed.service;
 import com.example.dise.domain.feed.controller.dto.response.FeedDetailsResponse;
 import com.example.dise.domain.feed.domain.Feed;
 import com.example.dise.domain.feed.domain.repository.FeedRepository;
-import com.example.dise.domain.feed.exception.FeedNotFoundException;
-import com.example.dise.domain.user.domain.User;
-import com.example.dise.domain.user.facade.UserFacade;
+import com.example.dise.domain.feed.facade.FeedFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,11 +13,12 @@ import org.springframework.transaction.annotation.Transactional;
 public class FeedDetailsService {
 
     private final FeedRepository feedRepository;
+    private final FeedFacade feedFacade;
 
     @Transactional(readOnly = true)
     public FeedDetailsResponse execute(Integer feedId) {
 
-        Feed feed = getFeed(feedId);
+        Feed feed = feedFacade.getFeedById(feedId);
 
         return FeedDetailsResponse.builder()
                 .title(feed.getTitle())
@@ -27,11 +26,5 @@ public class FeedDetailsService {
                 .createdAt(feed.getCreatedAt())
                 .userName(feed.getUser().getName())
                 .build();
-    }
-
-    private Feed getFeed(Integer feedId) {
-
-        return feedRepository.findById(feedId)
-                .orElseThrow(() -> FeedNotFoundException.EXCEPTION);
     }
 }

@@ -5,6 +5,7 @@ import com.example.dise.domain.feed.domain.Feed;
 import com.example.dise.domain.feed.domain.repository.FeedRepository;
 import com.example.dise.domain.feed.exception.FeedNotFoundException;
 import com.example.dise.domain.feed.exception.NotModifyFeedException;
+import com.example.dise.domain.feed.facade.FeedFacade;
 import com.example.dise.domain.user.domain.User;
 import com.example.dise.domain.user.facade.UserFacade;
 import lombok.RequiredArgsConstructor;
@@ -17,11 +18,12 @@ public class UpdateFeedService {
 
     private final UserFacade userFacade;
     private final FeedRepository feedRepository;
+    private final FeedFacade feedFacade;
 
     @Transactional
     public void modifyFeed(Integer feedId, UpdateFeedRequest request) {
         User user = userFacade.getCurrentUser();
-        Feed feed = getFeed(feedId);
+        Feed feed = feedFacade.getFeedById(feedId);
 
         if (!user.equals(feed.getUser())) {
             throw NotModifyFeedException.EXCEPTION;
@@ -31,10 +33,4 @@ public class UpdateFeedService {
                 request.getContent(),
                 request.getCategory());
     }
-
-    private Feed getFeed(Integer feedId) {
-        return feedRepository.findById(feedId)
-                .orElseThrow(() -> FeedNotFoundException.EXCEPTION);
-    }
-
 }

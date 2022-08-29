@@ -5,6 +5,7 @@ import com.example.dise.domain.feed.domain.repository.FeedRepository;
 import com.example.dise.domain.feed.exception.FeedNotFoundException;
 import com.example.dise.domain.feed.exception.NotDeleteFeedException;
 import com.example.dise.domain.feed.exception.NotModifyFeedException;
+import com.example.dise.domain.feed.facade.FeedFacade;
 import com.example.dise.domain.user.domain.User;
 import com.example.dise.domain.user.facade.UserFacade;
 import lombok.RequiredArgsConstructor;
@@ -17,22 +18,18 @@ public class DeleteFeedService {
 
     private final UserFacade userFacade;
     private final FeedRepository feedRepository;
+    private final FeedFacade feedFacade;
 
     @Transactional
     public void execute(Integer feedId) {
 
         User user = userFacade.getCurrentUser();
-        Feed feed = getFeed(feedId);
+        Feed feed = feedFacade.getFeedById(feedId);
 
         if (!user.equals(feed.getUser())) {
             throw NotDeleteFeedException.EXCEPTION;
         }
 
         feedRepository.delete(feed);
-    }
-
-    private Feed getFeed(Integer feedId) {
-        return feedRepository.findById(feedId)
-                .orElseThrow(() -> FeedNotFoundException.EXCEPTION);
     }
 }
