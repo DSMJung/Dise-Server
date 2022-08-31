@@ -17,7 +17,6 @@ import org.springframework.transaction.annotation.Transactional;
 public class UpdateFeedService {
 
     private final UserFacade userFacade;
-    private final FeedRepository feedRepository;
     private final FeedFacade feedFacade;
 
     @Transactional

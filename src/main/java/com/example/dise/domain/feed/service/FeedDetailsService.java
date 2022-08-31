@@ -12,7 +12,6 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class FeedDetailsService {
 
-    private final FeedRepository feedRepository;
     private final FeedFacade feedFacade;
 
     @Transactional(readOnly = true)
