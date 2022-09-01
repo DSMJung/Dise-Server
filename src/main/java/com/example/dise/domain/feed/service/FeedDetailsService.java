@@ -2,7 +2,6 @@ package com.example.dise.domain.feed.service;
 
 import com.example.dise.domain.feed.controller.dto.response.FeedDetailsResponse;
 import com.example.dise.domain.feed.domain.Feed;
-import com.example.dise.domain.feed.domain.repository.FeedRepository;
 import com.example.dise.domain.feed.facade.FeedFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
