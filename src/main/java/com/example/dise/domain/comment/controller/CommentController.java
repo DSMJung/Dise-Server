@@ -6,6 +6,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/comment")
@@ -14,7 +16,8 @@ public class CommentController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/{feed-id}")
-    public void createComment(@PathVariable("feed-id") Integer id, CreateCommentRequest request) {
+    public void createComment(@PathVariable("feed-id") Integer id,
+                              @RequestBody @Valid CreateCommentRequest request) {
         commentService.execute(id, request);
     }
 }
