@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 
 @Getter
 @Builder
-public class FeedResponse {
+public class FeedElement {
 
     private final Integer feedId;
     private final String title;

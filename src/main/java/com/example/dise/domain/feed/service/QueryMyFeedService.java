@@ -1,7 +1,7 @@
 package com.example.dise.domain.feed.service;
 
 import com.example.dise.domain.feed.controller.dto.response.FeedListResponse;
-import com.example.dise.domain.feed.controller.dto.response.FeedResponse;
+import com.example.dise.domain.feed.controller.dto.response.FeedElement;
 import com.example.dise.domain.feed.domain.Feed;
 import com.example.dise.domain.feed.domain.repository.FeedRepository;
 import com.example.dise.domain.user.domain.User;
@@ -24,7 +24,7 @@ public class QueryMyFeedService {
     public FeedListResponse myFeedList() {
         User user = userFacade.getCurrentUser();
 
-        List<FeedResponse> feedList = feedRepository.findAllByUserIdOrderByCreatedAtDesc(user.getId())
+        List<FeedElement> feedList = feedRepository.findAllByUserIdOrderByCreatedAtDesc(user.getId())
                 .stream()
                 .map(this::buildMyFeedList)
                 .collect(Collectors.toList());
@@ -32,8 +32,8 @@ public class QueryMyFeedService {
         return new FeedListResponse(feedList);
     }
 
-    private FeedResponse buildMyFeedList(Feed feed) {
-        return FeedResponse.builder()
+    private FeedElement buildMyFeedList(Feed feed) {
+        return FeedElement.builder()
                 .feedId(feed.getId())
                 .title(feed.getTitle())
                 .content(feed.getContent())
