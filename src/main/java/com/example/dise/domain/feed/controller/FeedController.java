@@ -3,10 +3,8 @@ package com.example.dise.domain.feed.controller;
 import com.example.dise.domain.feed.controller.dto.request.CreateFeedRequest;
 import com.example.dise.domain.feed.controller.dto.request.UpdateFeedRequest;
 import com.example.dise.domain.feed.controller.dto.response.FeedDetailsResponse;
-import com.example.dise.domain.feed.service.CreateFeedService;
-import com.example.dise.domain.feed.service.DeleteFeedService;
-import com.example.dise.domain.feed.service.FeedDetailsService;
-import com.example.dise.domain.feed.service.UpdateFeedService;
+import com.example.dise.domain.feed.controller.dto.response.FeedListResponse;
+import com.example.dise.domain.feed.service.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -19,6 +17,7 @@ import javax.validation.Valid;
 public class FeedController {
 
     private final CreateFeedService createFeedService;
+    private final QueryMyFeedService queryMyFeedService;
     private final UpdateFeedService updateFeedService;
     private final DeleteFeedService deleteFeedService;
     private final FeedDetailsService feedDetailsService;
@@ -46,4 +45,10 @@ public class FeedController {
     public FeedDetailsResponse feedDetails(@PathVariable("feed-id") Integer feedId) {
         return feedDetailsService.execute(feedId);
     }
+
+    @GetMapping
+    public FeedListResponse myFeedList() {
+        return queryMyFeedService.myFeedList();
+    }
+
 }
