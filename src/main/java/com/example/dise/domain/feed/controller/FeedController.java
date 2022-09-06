@@ -17,6 +17,7 @@ import javax.validation.Valid;
 public class FeedController {
 
     private final CreateFeedService createFeedService;
+    private final QueryMyFeedService queryMyFeedService;
     private final UpdateFeedService updateFeedService;
     private final DeleteFeedService deleteFeedService;
     private final FeedDetailsService feedDetailsService;
@@ -50,4 +51,10 @@ public class FeedController {
     public FeedListResponse feedListResponse() {
         return queryFeedAllService.execute();
     }
+    
+    @GetMapping
+    public FeedListResponse myFeedList() {
+        return queryMyFeedService.myFeedList();
+    }
+
 }

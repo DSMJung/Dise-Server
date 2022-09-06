@@ -9,4 +9,5 @@ import java.util.List;
 @AllArgsConstructor
 public class FeedListResponse {
     private final List<FeedResponse> feedResponseList;
+    private final List<FeedElement> feedList;
 }

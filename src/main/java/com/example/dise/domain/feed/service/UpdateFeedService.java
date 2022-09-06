@@ -2,8 +2,6 @@ package com.example.dise.domain.feed.service;
 
 import com.example.dise.domain.feed.controller.dto.request.UpdateFeedRequest;
 import com.example.dise.domain.feed.domain.Feed;
-import com.example.dise.domain.feed.domain.repository.FeedRepository;
-import com.example.dise.domain.feed.exception.FeedNotFoundException;
 import com.example.dise.domain.feed.exception.NotModifyFeedException;
 import com.example.dise.domain.feed.facade.FeedFacade;
 import com.example.dise.domain.user.domain.User;
