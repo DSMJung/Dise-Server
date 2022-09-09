@@ -11,6 +11,7 @@ public enum ErrorCode {
     INVALID_JWT(401, "토큰이 유효하지 않습니다."),
     NOT_MODIFY_FEED(401, "게시글을 수정할 수 없습니다."),
     NOT_DELETE_FEED(401, "게시글을 삭제할 수 없습니다."),
+    NOT_MODIFY_COMMENT(401, "댓글을 삭제할 수 없습니다."),
 
     PASSWORD_MISMATCH(401, "비밀번호가 불일치합니다."),
 
