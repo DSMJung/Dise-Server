@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 public class QueryFeedAllService {
     private final FeedRepository feedRepository;
 
-    @Transactional
+    @Transactional(readOnly = true)
     public FeedListResponse execute() {
         List<FeedElement> feedResponseList = feedRepository.findAllByOrderById()
                 .stream()
