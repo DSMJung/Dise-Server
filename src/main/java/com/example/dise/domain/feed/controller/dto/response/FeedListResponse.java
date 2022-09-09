@@ -8,6 +8,5 @@ import java.util.List;
 @Getter
 @AllArgsConstructor
 public class FeedListResponse {
-    private final List<FeedResponse> feedResponseList;
     private final List<FeedElement> feedList;
 }
