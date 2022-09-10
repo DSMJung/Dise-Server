@@ -34,4 +34,9 @@ public class Comment {
         this.user = user;
         this.feed = feed;
     }
+
+    public void modifyComment(String content) {
+        this.content = content;
+    }
+
 }
