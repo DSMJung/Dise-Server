@@ -2,8 +2,10 @@ package com.example.dise.domain.comment.controller;
 
 import com.example.dise.domain.comment.controller.dto.request.CreateCommentRequest;
 import com.example.dise.domain.comment.controller.dto.request.UpdateCommentRequest;
+import com.example.dise.domain.comment.controller.dto.response.CommentListResponse;
 import com.example.dise.domain.comment.service.CreateCommentService;
 import com.example.dise.domain.comment.service.DeleteCommentService;
+import com.example.dise.domain.comment.service.QueryCommentService;
 import com.example.dise.domain.comment.service.UpdateCommentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -17,6 +19,7 @@ import javax.validation.Valid;
 public class CommentController {
 
     private final CreateCommentService commentService;
+    private final QueryCommentService queryCommentService;
     private final UpdateCommentService updateCommentService;
     private final DeleteCommentService deleteCommentService;
 
@@ -39,4 +42,10 @@ public class CommentController {
     public void deleteComment(@PathVariable("comment-id") Integer commentId) {
         deleteCommentService.execute(commentId);
     }
+
+    @GetMapping("/{feed-id}")
+    public CommentListResponse getComment(@PathVariable("feed-id") Integer feedId) {
+        return queryCommentService.execute(feedId);
+    }
+
 }
