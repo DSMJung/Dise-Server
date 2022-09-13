@@ -21,6 +21,7 @@ public class FeedController {
     private final UpdateFeedService updateFeedService;
     private final DeleteFeedService deleteFeedService;
     private final FeedDetailsService feedDetailsService;
+    private final QueryFeedAllService queryFeedAllService;
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
@@ -46,6 +47,11 @@ public class FeedController {
         return feedDetailsService.execute(feedId);
     }
 
+    @GetMapping("/list")
+    public FeedListResponse feedListResponse() {
+        return queryFeedAllService.execute();
+    }
+    
     @GetMapping
     public FeedListResponse myFeedList() {
         return queryMyFeedService.myFeedList();
