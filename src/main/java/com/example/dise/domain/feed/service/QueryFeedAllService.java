@@ -24,7 +24,9 @@ public class QueryFeedAllService {
                 .collect(Collectors.toList());
         return new FeedListResponse(feedResponseList);
     }
+
     private FeedElement feedBuilder(Feed feed) {
+
         return FeedElement.builder()
                 .feedId(feed.getId())
                 .content(feed.getContent())
