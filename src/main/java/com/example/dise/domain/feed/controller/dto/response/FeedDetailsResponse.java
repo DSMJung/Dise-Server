@@ -1,6 +1,5 @@
 package com.example.dise.domain.feed.controller.dto.response;
 
-import com.example.dise.domain.user.domain.User;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -14,4 +13,5 @@ public class FeedDetailsResponse {
     private final String content;
     private final String userName;
     private final LocalDateTime createdAt;
+
 }
