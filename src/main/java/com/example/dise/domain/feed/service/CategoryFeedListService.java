@@ -18,7 +18,7 @@ public class CategoryFeedListService {
 
     private final FeedRepository feedRepository;
 
-    @Transactional
+    @Transactional(readOnly = true)
     public FeedListResponse execute(Category category) {
 
         List<FeedElement> feedElementList = feedRepository.findByCategoryOrderByCreatedAtDesc(category)
