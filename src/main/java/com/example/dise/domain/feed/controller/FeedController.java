@@ -4,6 +4,7 @@ import com.example.dise.domain.feed.controller.dto.request.CreateFeedRequest;
 import com.example.dise.domain.feed.controller.dto.request.UpdateFeedRequest;
 import com.example.dise.domain.feed.controller.dto.response.FeedDetailsResponse;
 import com.example.dise.domain.feed.controller.dto.response.FeedListResponse;
+import com.example.dise.domain.feed.domain.type.Category;
 import com.example.dise.domain.feed.service.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -22,6 +23,7 @@ public class FeedController {
     private final DeleteFeedService deleteFeedService;
     private final FeedDetailsService feedDetailsService;
     private final QueryFeedAllService queryFeedAllService;
+    private final CategoryFeedListService categoryFeedListService;
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
@@ -55,6 +57,11 @@ public class FeedController {
     @GetMapping
     public FeedListResponse myFeedList() {
         return queryMyFeedService.myFeedList();
+    }
+
+    @GetMapping("/category/{category}")
+    public FeedListResponse categoryFeedList(@PathVariable("category") Category category) {
+        return categoryFeedListService.execute(category);
     }
 
 }
