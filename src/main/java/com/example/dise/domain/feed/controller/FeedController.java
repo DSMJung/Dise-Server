@@ -24,6 +24,7 @@ public class FeedController {
     private final FeedDetailsService feedDetailsService;
     private final QueryFeedAllService queryFeedAllService;
     private final CategoryFeedListService categoryFeedListService;
+    private final SearchFeedService searchFeedService;
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
@@ -62,6 +63,11 @@ public class FeedController {
     @GetMapping("/category/{category}")
     public FeedListResponse categoryFeedList(@PathVariable("category") Category category) {
         return categoryFeedListService.execute(category);
+    }
+
+    @GetMapping("/search/{keyword}")
+    public FeedListResponse searchFeed(@PathVariable("keyword") String keyword) {
+        return searchFeedService.execute(keyword);
     }
 
 }
