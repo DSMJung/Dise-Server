@@ -10,7 +10,7 @@ public interface FeedRepository extends JpaRepository<Feed, Integer> {
 
     List<Feed> findByCategoryOrderByCreatedAtDesc(Category category);
 
-    List<Feed> findByTitleContainsOrderByCreatedAtDesc(String keyword);
+    List<Feed> findByTitleContainingOrderByCreatedAtDesc(String keyword);
 
     List<Feed> findAllByOrderById();
 

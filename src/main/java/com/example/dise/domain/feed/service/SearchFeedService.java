@@ -21,7 +21,7 @@ public class SearchFeedService {
     @Transactional(readOnly = true)
     public FeedListResponse execute(String keyword) {
 
-        List<FeedElement> feedElementList = feedRepository.findByTitleContainsOrderByCreatedAtDesc(keyword)
+        List<FeedElement> feedElementList = feedRepository.findByTitleContainingOrderByCreatedAtDesc(keyword)
                 .stream()
                 .map(this::feedBuilder)
                 .collect(Collectors.toList());
