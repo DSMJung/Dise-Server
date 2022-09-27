@@ -23,7 +23,7 @@ jobs:
         run: ./gradlew build --info
 
       - name: Docker Build
-        run: docker build -t ${{ secrets.DOCKERHUB_IMAGE_NAME }} --build-arg DB_URL=${{ secrets.DB_URL }} --build-arg DB_USERNAME=${{ secrets.DB_USERNAME }} --build-arg DB_PASSWORD=${{ secrets.DB_PASSWORD }} --build-arg REDIS_PORT=${{ secrets.REDIS_PORT }} --build-arg REDIS_HOST=${{ secrets.REDIS_HOST }} --build-arg SECRET_KEY=${{ secrets.SECRET_KEY }} --build-arg ACCESS_EXP=${{ secrets.ACCESS_EXP }} --build-arg REFERSH_EXP=${{ secrets.REFRESH_EXP }} --build-arg S3_ACCESS_KEY=${{ secrets.S3_ACCESS_KEY }} --build-arg S3_SECRET_KEY=${{ secrets.S3_SECRET_KEY }} --build-arg HEADER=${{ secrets.HEADER }} --build-arg PREFIX=${{ secrets.PREFIX }} --build-arg S3_BUCKET=${{ secrets.S3_BUCKET }} --build-arg S3_REGION=${{ secrets.S3_REGION }} .
+        run: docker build -t ${{ secrets.DOCKERHUB_IMAGE_NAME }} --build-arg DB_URL=${{ secrets.DB_URL }} --build-arg DB_USERNAME=${{ secrets.DB_USERNAME }} --build-arg DB_PASSWORD=${{ secrets.DB_PASSWORD }} --build-arg SECRET_KEY=${{ secrets.SECRET_KEY }} --build-arg ACCESS_EXP=${{ secrets.ACCESS_EXP }} .
       - name: Login to DockerHub
 
         uses: docker/login-action@v1
