@@ -24,6 +24,7 @@ jobs:
 
       - name: Docker Build
         run: docker build -t ${{ secrets.DOCKERHUB_IMAGE_NAME }} --build-arg DB_URL=${{ secrets.DB_URL }} --build-arg DB_USERNAME=${{ secrets.DB_USERNAME }} --build-arg DB_PASSWORD=${{ secrets.DB_PASSWORD }} --build-arg SECRET_KEY=${{ secrets.SECRET_KEY }} --build-arg ACCESS_EXP=${{ secrets.ACCESS_EXP }} .
+
       - name: Login to DockerHub
 
         uses: docker/login-action@v1
