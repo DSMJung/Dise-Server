@@ -1,5 +1,4 @@
 FROM openjdk:11-jre-slim
-
 ADD build/libs/*.jar /app.jar
 
 EXPOSE 8080
