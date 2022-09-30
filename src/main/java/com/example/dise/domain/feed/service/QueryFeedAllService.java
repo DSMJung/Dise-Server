@@ -30,7 +30,7 @@ public class QueryFeedAllService {
         return FeedElement.builder()
                 .feedId(feed.getId())
                 .content(feed.getContent())
-                .name(feed.getUser().getName())
+                .name(feed.getUserName())
                 .createdAt(feed.getCreatedAt())
                 .title(feed.getTitle())
                 .build();
