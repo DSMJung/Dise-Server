@@ -38,7 +38,7 @@ public class QueryMyFeedService {
                 .title(feed.getTitle())
                 .content(feed.getContent())
                 .createdAt(feed.getCreatedAt())
-                .name(feed.getUser().getName())
+                .name(feed.getUserName())
                 .build();
     }
 
