@@ -5,7 +5,6 @@ import com.example.dise.domain.user.controller.dto.request.UpdateUserInfoRequest
 import com.example.dise.domain.user.domain.User;
 import com.example.dise.domain.user.facade.UserFacade;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -13,7 +12,6 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class UpdateUserInfoService {
 
-    private final PasswordEncoder passwordEncoder;
     private final UserFacade userFacade;
 
     @Transactional
@@ -22,7 +20,6 @@ public class UpdateUserInfoService {
         User user = userFacade.getCurrentUser();
 
         user.updateUserInfo (
-                passwordEncoder.encode(request.getPassword()),
                 request.getName());
     }
 }

@@ -33,8 +33,7 @@ public class User {
         this.name = name;
     }
 
-    public void updateUserInfo (String password, String name) {
-        this.password = password;
+    public void updateUserInfo (String name) {
         this.name = name;
     }
 }
