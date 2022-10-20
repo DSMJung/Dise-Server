@@ -1,5 +1,6 @@
 package com.example.dise.domain.user.controller;
 
+import com.example.dise.domain.user.controller.dto.request.UpdatePasswordRequest;
 import com.example.dise.domain.user.controller.dto.request.UpdateUserInfoRequest;
 import com.example.dise.domain.user.controller.dto.request.UserLoginRequest;
 import com.example.dise.domain.user.controller.dto.request.UserSignUpRequest;
@@ -22,6 +23,7 @@ public class UserController {
     private final UpdateUserInfoService updateUserInfoService;
     private final GetUserInfoService getUserInfoService;
     private final WithdrawalService withdrawalService;
+    private final UpdatePasswordService updatePasswordService;
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/signup")
@@ -32,6 +34,12 @@ public class UserController {
     @PostMapping("/login")
     public TokenResponse login(@RequestBody @Valid UserLoginRequest request) {
         return userLoginService.login(request);
+    }
+
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @PatchMapping
+    public void updatePassword(@RequestBody @Valid UpdatePasswordRequest request) {
+        updatePasswordService.updatePassword(request);
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
