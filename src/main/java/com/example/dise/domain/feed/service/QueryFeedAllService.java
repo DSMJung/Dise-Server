@@ -18,7 +18,7 @@ public class QueryFeedAllService {
 
     @Transactional(readOnly = true)
     public FeedListResponse execute() {
-        List<FeedElement> feedResponseList = feedRepository.findAllByOrderById()
+        List<FeedElement> feedResponseList = feedRepository.findAllByOrderByIdDesc()
                 .stream()
                 .map(this::feedBuilder)
                 .collect(Collectors.toList());
