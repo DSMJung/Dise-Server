@@ -12,7 +12,7 @@ public interface FeedRepository extends JpaRepository<Feed, Integer> {
 
     List<Feed> findByTitleContainingOrderByCreatedAtDesc(String keyword);
 
-    List<Feed> findAllByOrderById();
+    List<Feed> findAllByOrderByIdDesc();
 
     List<Feed> findAllByUserIdOrderByCreatedAtDesc(Integer userId);
 
