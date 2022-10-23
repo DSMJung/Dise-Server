@@ -34,7 +34,7 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Docker Build
-        run: docker build -t jungho1209/dise-server .
+        run: docker build -t jyk1029/dise-server .
 
       - name: Push on Dockerhub
-        run: docker push jungho1209/dise-server
+        run: docker push jyk1029/dise-server
