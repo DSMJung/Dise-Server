@@ -33,6 +33,7 @@ public class QueryCommentService {
     }
 
     private CommentElement buildCommentList(Comment comment) {
+
         return CommentElement.builder()
                 .commentId(comment.getId())
                 .content(comment.getContent())
