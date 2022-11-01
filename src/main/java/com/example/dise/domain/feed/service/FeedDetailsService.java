@@ -19,6 +19,7 @@ public class FeedDetailsService {
     public FeedDetailsResponse execute(Integer feedId) {
 
         Feed feed = feedFacade.getFeedById(feedId);
+        Integer userId = feed.getUserId();
 
         return FeedDetailsResponse.builder()
                 .feedId(feed.getId())
@@ -26,11 +27,11 @@ public class FeedDetailsService {
                 .content(feed.getContent())
                 .createdAt(feed.getCreatedAt())
                 .userName(feed.getUserName())
-                .isMine(getIsMine(feed.getUserId()))
+                .isMine(getIsMine(userId))
                 .build();
     }
 
-    private boolean getIsMine(Integer id) {
-        return userFacade.getUserId().equals(id);
+    private boolean getIsMine(Integer userId) {
+        return userFacade.getUserId().equals(userId);
     }
 }

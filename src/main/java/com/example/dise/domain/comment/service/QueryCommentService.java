@@ -35,15 +35,16 @@ public class QueryCommentService {
     }
 
     private CommentElement buildCommentList(Comment comment) {
+        Integer userId = comment.getUserId();
 
         return CommentElement.builder()
                 .commentId(comment.getId())
                 .content(comment.getContent())
                 .name(comment.getUserName())
-                .isMine(getIsMine(comment.getUserId()))
+                .isMine(getIsMine(userId))
                 .build();
     }
-    private boolean getIsMine(Integer id) {
-        return userFacade.getUserId().equals(id);
+    private boolean getIsMine(Integer userId) {
+        return userFacade.getUserId().equals(userId);
     }
 }
