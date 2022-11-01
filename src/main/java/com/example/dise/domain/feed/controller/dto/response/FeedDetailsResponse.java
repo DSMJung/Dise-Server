@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 @Builder
 public class FeedDetailsResponse {
 
+    private final Integer feedId;
     private final String title;
     private final String content;
     private final String userName;

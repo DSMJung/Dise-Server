@@ -7,6 +7,7 @@ import lombok.Getter;
 @Builder
 public class CommentElement {
 
+    private final Integer commentId;
     private final String content;
     private final String name;
 

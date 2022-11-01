@@ -19,6 +19,7 @@ public class FeedDetailsService {
         Feed feed = feedFacade.getFeedById(feedId);
 
         return FeedDetailsResponse.builder()
+                .feedId(feed.getId())
                 .title(feed.getTitle())
                 .content(feed.getContent())
                 .createdAt(feed.getCreatedAt())
