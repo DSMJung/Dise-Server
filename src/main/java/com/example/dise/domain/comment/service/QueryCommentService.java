@@ -6,6 +6,7 @@ import com.example.dise.domain.comment.domain.Comment;
 import com.example.dise.domain.comment.domain.repository.CommentRepository;
 import com.example.dise.domain.feed.domain.Feed;
 import com.example.dise.domain.feed.facade.FeedFacade;
+import com.example.dise.domain.user.facade.UserFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,6 +20,7 @@ public class QueryCommentService {
 
     private final FeedFacade feedFacade;
     private final CommentRepository commentRepository;
+    private final UserFacade userFacade;
 
     @Transactional(readOnly = true)
     public CommentListResponse execute(Integer feedId) {
@@ -37,8 +39,11 @@ public class QueryCommentService {
         return CommentElement.builder()
                 .commentId(comment.getId())
                 .content(comment.getContent())
-                .name(comment.getUser().getName())
+                .name(comment.getUserName())
+                .isMine(getIsMine(comment.getUserId()))
                 .build();
     }
-
+    private boolean getIsMine(Integer id) {
+        return userFacade.getUserId().equals(id);
+    }
 }

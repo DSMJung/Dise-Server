@@ -28,5 +28,8 @@ public class UserFacade {
             throw PasswordMismatchException.EXCEPTION;
         }
     }
+    public Integer getUserId() {
+        return getCurrentUser().getId();
+    }
 }
 

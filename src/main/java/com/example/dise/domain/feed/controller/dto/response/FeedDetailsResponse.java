@@ -14,5 +14,5 @@ public class FeedDetailsResponse {
     private final String content;
     private final String userName;
     private final LocalDateTime createdAt;
-
+    private final boolean isMine;
 }
