@@ -24,7 +24,7 @@ public class QueryMyFeedService {
     public FeedListResponse myFeedList() {
         User user = userFacade.getCurrentUser();
 
-        List<FeedElement> feedList = feedRepository.findAllByUserIdOrderByCreatedAtDesc(user.getId())
+        List<FeedElement> feedList = feedRepository.findAllByUserOrderByCreatedAtDesc(user)
                 .stream()
                 .map(this::buildMyFeedList)
                 .collect(Collectors.toList());

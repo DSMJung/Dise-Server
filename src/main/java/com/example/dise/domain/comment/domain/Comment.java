@@ -39,4 +39,11 @@ public class Comment {
         this.content = content;
     }
 
+    public String getUserName() {
+        return user.getName();
+    }
+    public Integer getUserId() {
+        return user.getId();
+    }
+
 }

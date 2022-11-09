@@ -49,4 +49,8 @@ public class Feed extends BaseTimeEntity {
         return user.getName();
     }
 
+    public Integer getUserId() {
+        return user.getId();
+    }
+
 }
