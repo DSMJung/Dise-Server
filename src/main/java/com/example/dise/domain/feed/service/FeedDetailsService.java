@@ -3,6 +3,7 @@ package com.example.dise.domain.feed.service;
 import com.example.dise.domain.feed.controller.dto.response.FeedDetailsResponse;
 import com.example.dise.domain.feed.domain.Feed;
 import com.example.dise.domain.feed.facade.FeedFacade;
+import com.example.dise.domain.user.exception.UserNotFoundException;
 import com.example.dise.domain.user.facade.UserFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -32,6 +33,10 @@ public class FeedDetailsService {
     }
 
     private boolean getIsMine(Integer userId) {
-        return userFacade.getUserId().equals(userId);
+        try {
+            return userFacade.getUserId().equals(userId);
+        } catch (UserNotFoundException e) {
+            return false;
+        }
     }
 }
