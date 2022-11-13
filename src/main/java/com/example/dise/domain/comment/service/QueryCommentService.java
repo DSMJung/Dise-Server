@@ -6,6 +6,7 @@ import com.example.dise.domain.comment.domain.Comment;
 import com.example.dise.domain.comment.domain.repository.CommentRepository;
 import com.example.dise.domain.feed.domain.Feed;
 import com.example.dise.domain.feed.facade.FeedFacade;
+import com.example.dise.domain.user.exception.UserNotFoundException;
 import com.example.dise.domain.user.facade.UserFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -45,6 +46,10 @@ public class QueryCommentService {
                 .build();
     }
     private boolean getIsMine(Integer userId) {
-        return userFacade.getUserId().equals(userId);
+        try {
+            return userFacade.getUserId().equals(userId);
+        } catch (UserNotFoundException e) {
+            return false;
+        }
     }
 }
